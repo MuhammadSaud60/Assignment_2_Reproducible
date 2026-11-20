@@ -1,5 +1,5 @@
 import pandas as pd
-from src.assignment_2.cleaning import fix_data_types, standardize_categories, drop_duplicate, handle_missing_values, fill_missing_values
+from assignment_2.cleaning import fix_data_types, standardize_categories, drop_duplicate, handle_missing_values, fill_missing_values
 
 
 def test_fix_data_types():
