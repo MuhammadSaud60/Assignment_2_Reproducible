@@ -1,5 +1,5 @@
 import pandas as pd
-from src.assignment_2.cleaning import fix_data_types, standardize_categories, drop_duplicate
+from src.assignment_2.cleaning import fix_data_types, standardize_categories, drop_duplicate, handle_missing_values, fill_missing_values
 
 
 def test_fix_data_types():
@@ -43,3 +43,25 @@ def test_drop_duplicate_complaints():
     result = drop_duplicate(df)
     assert len(result) == 2
     assert list(result["unique_key"]) == [1, 2]
+
+
+
+def test_handle_missing_values():
+    df = pd.DataFrame({
+        "facility_type": [None, None, "X"],
+        "complaint_type": ["Noise", "Noise", "Noise"],
+    })
+    result = handle_missing_values(df)
+    assert "facility_type" not in result.columns
+    assert "complaint_type" in result.columns
+
+
+
+def test_fill_missing_values():
+    df = pd.DataFrame({
+        "borough": ["BROOKLYN", None],
+        "descriptor": [None, "Loud Music"],
+    })
+    result = fill_missing_values(df)
+    assert result["borough"].iloc[1] == "UNSPECIFIED"
+    assert result["descriptor"].iloc[0] == "NOT SPECIFIED"

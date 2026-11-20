@@ -107,5 +107,56 @@ def drop_duplicate(df):
     
     """
 
-    df = df.copy()
-    return df.drop_duplicates(subset=["unique_key"], keep="first")
+    cleaned = df.copy()
+    return cleaned.drop_duplicates(subset=["unique_key"], keep="first")
+
+
+
+
+
+def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Drop highly sparse columns that provide insufficient information.
+
+
+    """
+    cleaned = df.copy()
+
+    columns_to_drop = [
+        "facility_type",
+        "taxi_company_borough",
+        "road_ramp",
+        "bridge_highway_direction",
+        "due_date",
+        "bridge_highway_name",
+        "bridge_highway_segment",
+        "taxi_pick_up_location",
+        "vehicle_type"
+    ]
+
+    existing_columns = [
+        column for column in columns_to_drop
+        if column in cleaned.columns
+    ]
+
+    cleaned = cleaned.drop(columns=existing_columns)
+
+
+    return cleaned
+
+
+
+def fill_missing_values(df):
+
+    """
+    
+    Fill missing borough and descriptor with placeholder labels.
+    
+    """
+
+    cleaned = df.copy()
+
+    cleaned["borough"] = cleaned["borough"].fillna("UNSPECIFIED")
+    cleaned["descriptor"] = cleaned["descriptor"].fillna("NOT SPECIFIED")
+
+    return cleaned
