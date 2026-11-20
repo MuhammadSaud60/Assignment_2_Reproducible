@@ -6,7 +6,6 @@
 
 
 from pathlib import Path
-
 import pandas as pd
 
 
@@ -21,7 +20,7 @@ URL = "https://data.cityofnewyork.us/resource/erm2-nwe9.csv?$limit=10000"
 
 
 def download_raw_data() -> pd.DataFrame:
-    
+
     """Download NYC 311 records and save the original CSV locally."""
 
     RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
