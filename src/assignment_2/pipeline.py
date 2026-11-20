@@ -22,6 +22,8 @@ from assignment_2.validation import (
     validate_required_fields,
 )
 
+from assignment_2.quality_report import save_quality_reports
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -39,7 +41,8 @@ def run_pipeline() -> pd.DataFrame:
             f"Raw dataset not found: {RAW_DATA_PATH}"
         )
 
-    df = pd.read_csv(RAW_DATA_PATH)
+    raw_df = pd.read_csv(RAW_DATA_PATH)
+    df = raw_df.copy()
 
     print("RAW DATA LOADED")
     print(f"Initial rows: {len(df):,}")
@@ -52,13 +55,21 @@ def run_pipeline() -> pd.DataFrame:
     df = fill_missing_values(df)
 
     # Validation
-    validate_unique_key(df)
-    validate_data_types(df)
-    validate_required_fields(df)
+    validation_results = {
+    "unique_key": validate_unique_key(df),
+    "data_types": validate_data_types(df),
+    "required_fields": validate_required_fields(df),
+    }
 
     # Save cleaned data
     CLEANED_DATA_DIR.mkdir(parents=True, exist_ok=True)
     df.to_csv(CLEANED_DATA_PATH, index=False)
+
+    save_quality_reports(
+    raw_df=raw_df,
+    cleaned_df=df,
+    validation_results=validation_results,
+    )
 
     print("\nPIPELINE COMPLETED")
     print("-" * 40)
