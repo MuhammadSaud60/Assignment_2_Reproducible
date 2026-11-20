@@ -21,6 +21,20 @@ INTEGER_CODE_COLUMNS = [
 ]
 
 
+categorical_columns = [
+    "agency",
+    "agency_name",
+    "complaint_type",
+    "descriptor",
+    "location_type",
+    "status",
+    "borough",
+    "open_data_channel_type",
+    "address_type",
+    "park_borough"
+]
+
+
 def fix_data_types(df: pd.DataFrame) -> pd.DataFrame:
     """
     Convert identifier, date, and integer-code columns to appropriate
@@ -60,3 +74,38 @@ def fix_data_types(df: pd.DataFrame) -> pd.DataFrame:
         ).astype("Int64")
 
     return cleaned
+
+
+
+
+
+def standardize_categories(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Standardize text columns by removing leading/trailing spaces
+    and normalizing capitalization in categorical values.
+
+    """
+    cleaned = df.copy()
+
+
+    for column in categorical_columns:
+        if column in cleaned.columns:
+            cleaned[column] = (
+                cleaned[column]
+                .astype("string")
+                .str.strip()
+                .str.upper()
+            )
+
+    return cleaned
+
+
+def drop_duplicate(df):
+    """
+    
+    Remove duplicate rows by unique_key, keeping the first.
+    
+    """
+
+    df = df.copy()
+    return df.drop_duplicates(subset=["unique_key"], keep="first")

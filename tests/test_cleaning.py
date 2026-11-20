@@ -1,5 +1,5 @@
 import pandas as pd
-from src.assignment_2.cleaning import fix_data_types
+from src.assignment_2.cleaning import fix_data_types, standardize_categories, drop_duplicate
 
 
 def test_fix_data_types():
@@ -18,3 +18,28 @@ def test_fix_data_types():
     assert str(result["unique_key"].dtype) == "string"
     assert str(result["incident_zip"].dtype) == "Int64"
     assert result["incident_zip"].iloc[0] == 11221
+
+
+def test_standardize_categories():
+    df = pd.DataFrame({
+        "complaint_type": ["  noise - street/sidewalk "],
+        "status": ["closed"],
+        "borough": ["brooklyn"],
+        "agency": ["nypd"],
+    })
+    result = standardize_categories(df)
+    assert result["complaint_type"].iloc[0] == "NOISE - STREET/SIDEWALK"
+    assert result["status"].iloc[0] == "CLOSED"
+    assert result["borough"].iloc[0] == "BROOKLYN"
+    assert result["agency"].iloc[0] == "NYPD"
+
+
+
+def test_drop_duplicate_complaints():
+    df = pd.DataFrame({
+        "unique_key": [1, 1, 2],
+        "complaint_type": ["Noise", "Noise", "Blocked Driveway"],
+    })
+    result = drop_duplicate(df)
+    assert len(result) == 2
+    assert list(result["unique_key"]) == [1, 2]
