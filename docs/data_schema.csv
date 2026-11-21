@@ -1,0 +1,45 @@
+column,data_type,non_null_count,missing_count,missing_percentage,sample_value
+unique_key,int64,10000,0,0.0,71177549
+created_date,str,10000,0,0.0,2026-11-19T02:06:04.000
+closed_date,str,4680,5320,53.2,2026-11-19T02:04:36.000
+agency,str,10000,0,0.0,NYPD
+agency_name,str,10000,0,0.0,New York City Police Department
+complaint_type,str,10000,0,0.0,Noise - Street/Sidewalk
+descriptor,str,9825,175,1.75,Loud Music/Party
+descriptor_2,str,4197,5803,58.03,Parked In Front Of Fire Hydrant
+location_type,str,9193,807,8.07,Street/Sidewalk
+incident_zip,float64,9913,87,0.87,11221.0
+incident_address,str,9736,264,2.64,1209 BUSHWICK AVENUE
+street_name,str,9735,265,2.65,BUSHWICK AVENUE
+cross_street_1,str,6438,3562,35.62,JEFFERSON AVENUE
+cross_street_2,str,6436,3564,35.64,HANCOCK STREET
+intersection_street_1,str,6488,3512,35.12,JEFFERSON AVENUE
+intersection_street_2,str,6488,3512,35.12,HANCOCK STREET
+address_type,str,9941,59,0.59,ADDRESS
+city,str,9426,574,5.74,BROOKLYN
+landmark,str,5806,4194,41.94,BUSHWICK AVENUE
+facility_type,str,9,9991,99.91,DSNY Garage
+status,str,10000,0,0.0,In Progress
+due_date,str,32,9968,99.68,2026-12-18T20:23:46.000
+resolution_description,str,7652,2348,23.48,"The New York City Police Department responded to the complaint and their investigation determined that no criminal violation existed. The condition was corrected without the need to issue a summons or effect an arrest. If the problem persists, please contact 311 to create another complaint. If possible, provide contact information so responding officers may reach out to you for more details. If necessary, your complaint may be referred to your local precinct's special operations units (Quality of Life, etc.). Thank you for your attention to this matter. We count on New Yorkers like yourself to maintain a safe City, so please let us know if you see other conditions that require our attention."
+resolution_action_updated_date,str,7738,2262,22.62,2026-11-19T02:04:44.000
+community_board,str,10000,0,0.0,0 Unspecified
+council_district,float64,9791,209,2.09,37.0
+police_precinct,str,10000,0,0.0,Unspecified
+bbl,float64,8958,1042,10.42,3033880001.0
+borough,str,10000,0,0.0,Unspecified
+x_coordinate_state_plane,float64,9840,160,1.6,1003984.0
+y_coordinate_state_plane,float64,9840,160,1.6,188194.0
+open_data_channel_type,str,10000,0,0.0,MOBILE
+park_facility_name,str,9996,4,0.04,Unspecified
+park_borough,str,10000,0,0.0,Unspecified
+vehicle_type,str,483,9517,95.17,Car
+taxi_company_borough,str,16,9984,99.84,BROOKLYN
+taxi_pick_up_location,str,86,9914,99.14,"LA GUARDIA AIRPORT, QUEENS (EAST ELMHURST) ,NY, 11369"
+bridge_highway_name,str,47,9953,99.53,E
+bridge_highway_direction,str,27,9973,99.73,B D E Downtown & Brooklyn lower level
+road_ramp,str,24,9976,99.76,Roadway
+bridge_highway_segment,str,47,9953,99.53,Platform
+latitude,float64,9840,160,1.6,40.68320382617059
+longitude,float64,9840,160,1.6,-73.92884819404979
+location,str,9840,160,1.6,POINT (-73.92884819405 40.683203826171)
