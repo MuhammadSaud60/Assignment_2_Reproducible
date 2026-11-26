@@ -32,7 +32,6 @@ ASSIGNMENT2/
 ├── outputs/
 │   ├── figures/
 │   └── reports/
-├── sql/
 ├── src/
 │   └── assignment/
 │       ├── data_loader.py
