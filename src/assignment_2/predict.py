@@ -57,7 +57,7 @@ def predict_from_csv(input_path, output_path):
         raise ValueError("Invalid or missing created_date values.")
 
     df["created_hour"] = df["created_date"].dt.hour
-    df["created_dayofweek"] = df["created_date"].dt.dayofweek
+    df["created_dayofweek"] = df["created_date"].dt.day_of_week
     df["created_month"] = df["created_date"].dt.month
 
     features = df[[
